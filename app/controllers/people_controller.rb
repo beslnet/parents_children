@@ -32,20 +32,13 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create_parent
-    @person = Person.find(params[:id])
-    father = params[:father_id]
-    mother = params[:mother_id]
-    if father != '' || mother != ''      
-      child = Person.find(params[:id])
+    father = Person.find(params[:father_id]) rescue nil 
+    mother = Person.find(params[:mother_id]) rescue nil
+    child  = Person.find(params[:id])        rescue nil
+    if (father || mother)
       parents = Child.find_or_create_by(person:child)
-      if father != ''
-        father = Person.find(father)
-        valor1 = parents.update(father:father)
-      end
-      if mother != ''
-        mother = Person.find(mother)
-        valor2 = parents.update(mother:mother)
-      end
+      parents.update(father:father) if father
+      parents.update(mother:mother) if mother
     end
     respond_to do |format|
     format.html { redirect_to @person, notice: 'Relatión of Parents was successfully created.' }
