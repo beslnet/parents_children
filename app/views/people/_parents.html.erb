@@ -1,0 +1,15 @@
+<% @person.children.each do |f| %>
+<% @father = f.father_id %>
+<% @mother = f.mother_id %>
+<% end %>
+
+<%= bootstrap_form_tag url:"/people/#{@person.id}/create_parent/", method: :post do |f| %>
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <%= f.select "father_id", options_from_collection_for_select(@parent, "id", "name", @father), include_blank: true %>
+    <%= f.select "mother_id", options_from_collection_for_select(@parent, "id", "name", @mother), include_blank: true %>
+    <%= f.submit %> 
+    <%= link_to "Borrar Relación", destroy_parent_person_path(@person), method: :delete %>
+  </div>
+
+</div>
+<% end %>

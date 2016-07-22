@@ -1,0 +1,26 @@
+Mini app para probar la creación de un sistema de usuarios con Devise, y que cada usuario pueda formarse una relación familiar
+
+Usuario "X"
+
+Puede asociarsele dos padres.
+Puede definirse un conyuge (el cual se crea automático para ambos lados).
+Puede asociarsele "N" hijos.
+
+
+Aún me falta validarle algunas reglas de negocio como por ejemplo:
+
+- El mismo usuario se puede registrar a si mismo como padre y como madre a la vez o sólo uno de ellos dos.
+- No evalúa ningún criterio a la hora de decirle quien es su padre, es decir... yo tengo un listado de todos las personas en el sistema, y podría asignarle su hermana, su esposa, su hija como padre y no está validado aún ese tipo de cosas.
+
+
+Cualquier ayuda será bienvenida! :-)
+
+----------
+Está realizado en Ruby 2.3 y Rails 4.2.6
+
+----------
+Para ejecutarlo:
+bundle
+rake db:migrate
+
+y crear usuarios manualmente, no hay ningún seed activo aún.

@@ -1,0 +1,44 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Conyuge:</strong>
+  <% @person.spouse.each do |person| %>
+
+  <%= person.name %>
+
+  <% end %>
+</p>
+
+<p>
+  <strong>Padres:</strong>
+  <ul>
+  <% @father.each do |father|  %>
+  <li>
+    <%= father.name %>
+  </li>
+  <% end %>
+  <% @mother.each do |mother| %>
+  <li>
+    <%= mother.name %>
+  </li>
+  <% end %>
+ </ul>
+</p>
+
+
+<p>
+  <strong>Hijos:</strong>
+  <ul>
+  <% @children.each do |child|  %>
+
+<li>
+  <%= child.person.name %>
+</li>
+  <% end %>
+ </ul>
+</p>
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
